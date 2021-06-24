@@ -1,6 +1,7 @@
 *.pdb
 *.dll
 *.exe
-*/*/obj/*
-*/*/bin/*
-*/*/packages/*
+**/obj/*
+**/bin/*
+**/packages/*
+**/.suo
