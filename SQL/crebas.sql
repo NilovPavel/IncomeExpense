@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     20.06.2021 12:27:09                          */
+/* Created on:     26.06.2021 15:55:41                          */
 /*==============================================================*/
 
 
@@ -59,6 +59,7 @@ go
 create table Categories (
    categoryId           int                  identity,
    CategoryName         nvarchar(Max)        not null,
+   enable               bit                  not null,
    constraint PK_CATEGORIES primary key (categoryId)
 )
 go
@@ -91,9 +92,8 @@ go
 /*==============================================================*/
 create table Users (
    userId               int                  identity,
-   Firstname            nvarchar(Max)        not null,
-   Lastname             nvarchar(Max)        not null,
-   Cash                 int                  not null,
+   UserName             nvarchar(Max)        not null,
+   StartCash            int                  not null,
    constraint PK_USERS primary key (userId)
 )
 go
