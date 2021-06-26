@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,23 @@ namespace WindowsForms
 {
     public partial class CategoryManager : Form
     {
-        public CategoryManager()
+        private IDataManager dataManager;
+
+        private void Initialization()
+        {
+            this.dataGridView1.DataSource = this.dataManager.GetCategories();
+        }
+
+        /*public CategoryManager()
         {
             InitializeComponent();
+        }*/
+
+        public CategoryManager(IDataManager dataManager)
+        {
+            this.dataManager = dataManager;
+            InitializeComponent();
+            this.Initialization();
         }
     }
 }

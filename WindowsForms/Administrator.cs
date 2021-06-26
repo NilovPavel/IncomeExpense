@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace WindowsForms
     public partial class Administrator : Form
     {
         private IUserManager userManager = new MashineUserManager();
+        private IDataManager dataManager = new EFDataManager();
 
         public Administrator()
         {
@@ -41,7 +43,7 @@ namespace WindowsForms
 
         private void categoryManager_Click(object sender, EventArgs e)
         {
-            CategoryManager categoryManager = new CategoryManager();
+            CategoryManager categoryManager = new CategoryManager(this.dataManager);
             categoryManager.ShowDialog();
         }
     }

@@ -101,6 +101,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Library\DatabaseManager\DatabaseManager.csproj">
+      <Project>{79BD5C0B-9CA2-461B-9AF5-CF7D1E70381B}</Project>
+      <Name>DatabaseManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Users\Users.csproj">
       <Project>{5bbd7a92-e9af-4b2f-b7fb-73826f6b0838}</Project>
       <Name>Users</Name>
