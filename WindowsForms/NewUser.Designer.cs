@@ -31,11 +31,14 @@ namespace WindowsForms
         {
             this.UserChoice = new System.Windows.Forms.Button();
             this.comboBoxUsers = new System.Windows.Forms.ComboBox();
+            this.startCashText = new System.Windows.Forms.TextBox();
+            this.UserLabel = new System.Windows.Forms.Label();
+            this.startCash = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UserChoice
             // 
-            this.UserChoice.Location = new System.Drawing.Point(233, 12);
+            this.UserChoice.Location = new System.Drawing.Point(305, 26);
             this.UserChoice.Name = "UserChoice";
             this.UserChoice.Size = new System.Drawing.Size(75, 23);
             this.UserChoice.TabIndex = 0;
@@ -46,23 +49,52 @@ namespace WindowsForms
             // comboBoxUsers
             // 
             this.comboBoxUsers.FormattingEnabled = true;
-            this.comboBoxUsers.Location = new System.Drawing.Point(13, 13);
+            this.comboBoxUsers.Location = new System.Drawing.Point(12, 28);
             this.comboBoxUsers.Name = "comboBoxUsers";
-            this.comboBoxUsers.Size = new System.Drawing.Size(197, 21);
+            this.comboBoxUsers.Size = new System.Drawing.Size(171, 21);
             this.comboBoxUsers.TabIndex = 1;
+            // 
+            // startCashText
+            // 
+            this.startCashText.Location = new System.Drawing.Point(190, 28);
+            this.startCashText.Name = "startCashText";
+            this.startCashText.Size = new System.Drawing.Size(109, 20);
+            this.startCashText.TabIndex = 2;
+            // 
+            // UserLabel
+            // 
+            this.UserLabel.AutoSize = true;
+            this.UserLabel.Location = new System.Drawing.Point(13, 9);
+            this.UserLabel.Name = "UserLabel";
+            this.UserLabel.Size = new System.Drawing.Size(80, 13);
+            this.UserLabel.TabIndex = 3;
+            this.UserLabel.Text = "Пользователь";
+            // 
+            // startCash
+            // 
+            this.startCash.AutoSize = true;
+            this.startCash.Location = new System.Drawing.Point(190, 8);
+            this.startCash.Name = "startCash";
+            this.startCash.Size = new System.Drawing.Size(106, 13);
+            this.startCash.TabIndex = 4;
+            this.startCash.Text = "Стартовый капитал";
             // 
             // NewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 51);
+            this.ClientSize = new System.Drawing.Size(384, 61);
+            this.Controls.Add(this.startCash);
+            this.Controls.Add(this.UserLabel);
+            this.Controls.Add(this.startCashText);
             this.Controls.Add(this.comboBoxUsers);
             this.Controls.Add(this.UserChoice);
-            this.MaximumSize = new System.Drawing.Size(340, 90);
-            this.MinimumSize = new System.Drawing.Size(340, 90);
+            this.MaximumSize = new System.Drawing.Size(400, 100);
+            this.MinimumSize = new System.Drawing.Size(400, 100);
             this.Name = "NewUser";
-            this.Text = "NewUser";
+            this.Text = "Добавление нового пользователя";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -70,5 +102,8 @@ namespace WindowsForms
 
         private System.Windows.Forms.Button UserChoice;
         private System.Windows.Forms.ComboBox comboBoxUsers;
+        private System.Windows.Forms.TextBox startCashText;
+        private System.Windows.Forms.Label UserLabel;
+        private System.Windows.Forms.Label startCash;
     }
 }

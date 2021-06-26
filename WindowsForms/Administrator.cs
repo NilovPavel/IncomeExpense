@@ -32,8 +32,6 @@ namespace WindowsForms
             this.userManager = new MashineUserManager();
             NewUser newUser = new NewUser(userManager);
             newUser.ShowDialog();
-            string selectUserName = newUser.SelectUser ?? string.Empty;
-            this.UsernameTextbox.Text = selectUserName;
         }
 
         private void UserManager_Click(object sender, EventArgs e)
