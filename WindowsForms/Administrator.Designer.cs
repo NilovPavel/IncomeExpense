@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsForms
 {
-    partial class MainWindow
+    partial class Administrator
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -40,9 +40,17 @@ namespace WindowsForms
             this.valueOfMode = new System.Windows.Forms.ToolStripStatusLabel();
             this.Username = new System.Windows.Forms.ToolStripStatusLabel();
             this.valueOfUsername = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ManagmentUsers = new System.Windows.Forms.GroupBox();
+            this.SelectUserButton = new System.Windows.Forms.Button();
+            this.AdministationCheckBox = new System.Windows.Forms.CheckBox();
+            this.UsernameTextbox = new System.Windows.Forms.TextBox();
+            this.UsernameLabel = new System.Windows.Forms.Label();
+            this.addUserButton = new System.Windows.Forms.Button();
+            this.categoryManager = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.ManagmentUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -51,7 +59,7 @@ namespace WindowsForms
             this.менюToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(641, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(644, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -60,6 +68,7 @@ namespace WindowsForms
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UserManager,
             this.ExportDataToReport,
+            this.categoryManager,
             this.Exit});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -78,7 +87,6 @@ namespace WindowsForms
             this.ExportDataToReport.Name = "ExportDataToReport";
             this.ExportDataToReport.Size = new System.Drawing.Size(234, 22);
             this.ExportDataToReport.Text = "Выгрузить данные в отчет";
-            this.ExportDataToReport.Click += new System.EventHandler(this.ExportDataToReport_Click);
             // 
             // Exit
             // 
@@ -95,7 +103,7 @@ namespace WindowsForms
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table.Location = new System.Drawing.Point(0, 27);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(641, 245);
+            this.table.Size = new System.Drawing.Size(644, 227);
             this.table.TabIndex = 1;
             this.table.Visible = false;
             // 
@@ -107,9 +115,9 @@ namespace WindowsForms
             this.valueOfMode,
             this.Username,
             this.valueOfUsername});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 328);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 339);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(641, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(644, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -135,17 +143,85 @@ namespace WindowsForms
             this.valueOfUsername.Name = "valueOfUsername";
             this.valueOfUsername.Size = new System.Drawing.Size(0, 17);
             // 
+            // ManagmentUsers
+            // 
+            this.ManagmentUsers.Controls.Add(this.addUserButton);
+            this.ManagmentUsers.Controls.Add(this.SelectUserButton);
+            this.ManagmentUsers.Controls.Add(this.AdministationCheckBox);
+            this.ManagmentUsers.Controls.Add(this.UsernameTextbox);
+            this.ManagmentUsers.Controls.Add(this.UsernameLabel);
+            this.ManagmentUsers.Location = new System.Drawing.Point(0, 260);
+            this.ManagmentUsers.Name = "ManagmentUsers";
+            this.ManagmentUsers.Size = new System.Drawing.Size(641, 76);
+            this.ManagmentUsers.TabIndex = 3;
+            this.ManagmentUsers.TabStop = false;
+            this.ManagmentUsers.Text = "Добавление пользователя";
+            // 
+            // SelectUserButton
+            // 
+            this.SelectUserButton.Location = new System.Drawing.Point(319, 17);
+            this.SelectUserButton.Name = "SelectUserButton";
+            this.SelectUserButton.Size = new System.Drawing.Size(189, 20);
+            this.SelectUserButton.TabIndex = 3;
+            this.SelectUserButton.Text = "Выбрать пользователя Windows";
+            this.SelectUserButton.UseVisualStyleBackColor = true;
+            this.SelectUserButton.Click += new System.EventHandler(this.SelectUserButton_Click);
+            // 
+            // AdministationCheckBox
+            // 
+            this.AdministationCheckBox.AutoSize = true;
+            this.AdministationCheckBox.Location = new System.Drawing.Point(527, 20);
+            this.AdministationCheckBox.Name = "AdministationCheckBox";
+            this.AdministationCheckBox.Size = new System.Drawing.Size(105, 17);
+            this.AdministationCheckBox.TabIndex = 2;
+            this.AdministationCheckBox.Text = "Администратор";
+            this.AdministationCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // UsernameTextbox
+            // 
+            this.UsernameTextbox.Location = new System.Drawing.Point(115, 17);
+            this.UsernameTextbox.Name = "UsernameTextbox";
+            this.UsernameTextbox.ReadOnly = true;
+            this.UsernameTextbox.Size = new System.Drawing.Size(188, 20);
+            this.UsernameTextbox.TabIndex = 1;
+            // 
+            // UsernameLabel
+            // 
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.Location = new System.Drawing.Point(6, 20);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(103, 13);
+            this.UsernameLabel.TabIndex = 0;
+            this.UsernameLabel.Text = "Имя пользователя";
+            // 
+            // addUserButton
+            // 
+            this.addUserButton.Location = new System.Drawing.Point(319, 44);
+            this.addUserButton.Name = "addUserButton";
+            this.addUserButton.Size = new System.Drawing.Size(189, 23);
+            this.addUserButton.TabIndex = 4;
+            this.addUserButton.Text = "Добавить пользователя";
+            this.addUserButton.UseVisualStyleBackColor = true;
+            // 
+            // categoryManager
+            // 
+            this.categoryManager.Name = "categoryManager";
+            this.categoryManager.Size = new System.Drawing.Size(234, 22);
+            this.categoryManager.Text = "Управление категориями";
+            this.categoryManager.Click += new System.EventHandler(this.categoryManager_Click);
+            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 350);
+            this.ClientSize = new System.Drawing.Size(644, 361);
+            this.Controls.Add(this.ManagmentUsers);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.table);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(657, 389);
+            this.MaximumSize = new System.Drawing.Size(660, 400);
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "Administrator";
             this.Text = "Учет доходов и расходов";
@@ -154,6 +230,8 @@ namespace WindowsForms
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.ManagmentUsers.ResumeLayout(false);
+            this.ManagmentUsers.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +250,13 @@ namespace WindowsForms
         private System.Windows.Forms.ToolStripStatusLabel valueOfMode;
         private System.Windows.Forms.ToolStripStatusLabel Username;
         private System.Windows.Forms.ToolStripStatusLabel valueOfUsername;
+        private System.Windows.Forms.GroupBox ManagmentUsers;
+        private System.Windows.Forms.TextBox UsernameTextbox;
+        private System.Windows.Forms.Label UsernameLabel;
+        private System.Windows.Forms.Button SelectUserButton;
+        private System.Windows.Forms.CheckBox AdministationCheckBox;
+        private System.Windows.Forms.Button addUserButton;
+        private System.Windows.Forms.ToolStripMenuItem categoryManager;
     }
 }
 
