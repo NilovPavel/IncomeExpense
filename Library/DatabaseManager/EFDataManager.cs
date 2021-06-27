@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,8 @@ namespace DatabaseManager
 
         void IDataManager.AddNewCategory(string category)
         {
-            throw new NotImplementedException();
+            this.modelAscon.Categories.Add(new Categories { CategoryName = category, enable = false });
+            this.modelAscon.SaveChanges();
         }
 
         void IDataManager.AddUser(string username, int startCash)
@@ -28,27 +30,28 @@ namespace DatabaseManager
 
         void IDataManager.CreateDatabase()
         {
-            SqlConnection myConn = new SqlConnection("Server=localhost;Integrated security=SSPI;database=Ascon");
+            ModelAscon modelAscon = new ModelAscon();
+            modelAscon.CreateDatabase();
         }
 
-        List<Categories> IDataManager.GetCategories()
+        ObservableCollection<Categories> IDataManager.GetCategories()
         {
-            return this.modelAscon.Categories.ToList();
+            return new ObservableCollection<Categories>(this.modelAscon.Categories);
         }
 
-        List<Data> IDataManager.GetData()
+        ObservableCollection<Data> IDataManager.GetData()
         {
-            return this.modelAscon.Data.ToList();
+            return new ObservableCollection<Data>(this.modelAscon.Data);
         }
 
-        List<Recepients> IDataManager.GetRecepients()
+        ObservableCollection<Recepients> IDataManager.GetRecepients()
         {
-            return this.modelAscon.Recepients.ToList();
+            return new ObservableCollection<Recepients>(this.modelAscon.Recepients);
         }
 
-        List<Users> IDataManager.GetUsers()
+        ObservableCollection<Users> IDataManager.GetUsers()
         {
-            return this.modelAscon.Users.ToList();
+            return new ObservableCollection<Users>(this.modelAscon.Users);
         }
 
         void IDataManager.ResetDatabase()
@@ -56,10 +59,12 @@ namespace DatabaseManager
             throw new NotImplementedException();
         }
 
-        void IDataManager.SetEnableCategory(int idCategory, string enable)
+        void IDataManager.UpdateCategory(int idCategory, string category, bool enable)
         {
-            Categories category = this.modelAscon.Categories.Where(item => item.categoryId == idCategory).FirstOrDefault();
-            
+            Categories currentCategory = this.modelAscon.Categories.Where(item => item.categoryId == idCategory).FirstOrDefault();
+            currentCategory.CategoryName = category;
+            currentCategory.enable = enable;
+            this.modelAscon.SaveChanges();
         }
 
         void IDataManager.SetUserRole(int userId, bool isAdmin)

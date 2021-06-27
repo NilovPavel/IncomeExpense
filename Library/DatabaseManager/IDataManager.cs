@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,14 @@ namespace DatabaseManager
         void ResetDatabase();
         void CreateDatabase();
 
-        List<Categories> GetCategories();
+        ObservableCollection<Categories> GetCategories();
         void AddNewCategory(string category);
-        void SetEnableCategory(int idCategory, string enable);
+        void UpdateCategory(int idCategory, string category, bool enable);
 
-        List<Data> GetData();
-        List<Recepients> GetRecepients();
-        
-        List<Users> GetUsers();
+        ObservableCollection<Data> GetData();
+        ObservableCollection<Recepients> GetRecepients();
+
+        ObservableCollection<Users> GetUsers();
         void AddUser(string username, int startCash);
         void SetUserRole(int userId, bool isAdmin);
     }
