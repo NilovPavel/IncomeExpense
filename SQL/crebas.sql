@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2017                    */
-/* Created on:     26.06.2021 15:55:41                          */
+/* Created on:     27.06.2021 17:38:28                          */
 /*==============================================================*/
 
 
@@ -94,6 +94,7 @@ create table Users (
    userId               int                  identity,
    UserName             nvarchar(Max)        not null,
    StartCash            int                  not null,
+   IsAdmin              bit                  not null,
    constraint PK_USERS primary key (userId)
 )
 go

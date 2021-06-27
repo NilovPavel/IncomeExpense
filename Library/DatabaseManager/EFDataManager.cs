@@ -25,13 +25,13 @@ namespace DatabaseManager
 
         void IDataManager.AddUser(string username, int startCash)
         {
-            throw new NotImplementedException();
+            this.modelAscon.Users.Add(new Users { UserName = username, StartCash = startCash });
+            this.modelAscon.SaveChanges();
         }
 
         void IDataManager.CreateDatabase()
         {
             ModelAscon modelAscon = new ModelAscon();
-            modelAscon.CreateDatabase();
         }
 
         ObservableCollection<Categories> IDataManager.GetCategories()
@@ -69,7 +69,9 @@ namespace DatabaseManager
 
         void IDataManager.SetUserRole(int userId, bool isAdmin)
         {
-            throw new NotImplementedException();
+            Users user = this.modelAscon.Users.FirstOrDefault(item => item.userId == userId);
+            user.IsAdmin = isAdmin;
+            this.modelAscon.SaveChanges();
         }
     }
 }
