@@ -54,6 +54,12 @@
     <Compile Include="Administrator.Designer.cs">
       <DependentUpon>Administrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="CashManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CashManager.Designer.cs">
+      <DependentUpon>CashManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoryManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashManager.resx">
+      <DependentUpon>CashManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CategoryManager.resx">
       <DependentUpon>CategoryManager.cs</DependentUpon>
