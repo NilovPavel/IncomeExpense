@@ -32,6 +32,7 @@ namespace WindowsForms
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoryManager = new System.Windows.Forms.ToolStripMenuItem();
             this.Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.операцииСБазойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewBase = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,11 @@ namespace WindowsForms
             this.Username = new System.Windows.Forms.ToolStripStatusLabel();
             this.valueOfUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.SelectUserButton = new System.Windows.Forms.Button();
+            this.userId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartCash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.updateUsers = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -62,6 +68,7 @@ namespace WindowsForms
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UserManager,
+            this.categoryManager,
             this.Exit});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -73,6 +80,13 @@ namespace WindowsForms
             this.UserManager.Size = new System.Drawing.Size(234, 22);
             this.UserManager.Text = "Управление пользователями";
             this.UserManager.Click += new System.EventHandler(this.UserManager_Click);
+            // 
+            // categoryManager
+            // 
+            this.categoryManager.Name = "categoryManager";
+            this.categoryManager.Size = new System.Drawing.Size(234, 22);
+            this.categoryManager.Text = "Управление категориями";
+            this.categoryManager.Click += new System.EventHandler(this.categoryManager_Click);
             // 
             // Exit
             // 
@@ -92,16 +106,26 @@ namespace WindowsForms
             // CreateNewBase
             // 
             this.CreateNewBase.Name = "CreateNewBase";
-            this.CreateNewBase.Size = new System.Drawing.Size(180, 22);
+            this.CreateNewBase.Size = new System.Drawing.Size(156, 22);
             this.CreateNewBase.Text = "Создать новую";
             this.CreateNewBase.Click += new System.EventHandler(this.CreateNewBase_Click);
             // 
             // table
             // 
+            this.table.AllowUserToAddRows = global::WindowsForms.Properties.Settings.Default.autogeneratecolumns;
+            this.table.AllowUserToDeleteRows = false;
             this.table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.table.AutoGenerateColumns = global::WindowsForms.Properties.Settings.Default.autogeneratecolumns;
             this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.userId,
+            this.NameUser,
+            this.StartCash,
+            this.IsAdmin});
+            this.table.DataBindings.Add(new System.Windows.Forms.Binding("AllowUserToAddRows", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.table.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.Location = new System.Drawing.Point(0, 27);
             this.table.Name = "table";
             this.table.Size = new System.Drawing.Size(644, 283);
@@ -154,11 +178,52 @@ namespace WindowsForms
             this.SelectUserButton.UseVisualStyleBackColor = true;
             this.SelectUserButton.Click += new System.EventHandler(this.SelectUserButton_Click);
             // 
+            // userId
+            // 
+            this.userId.DataPropertyName = "UserName";
+            this.userId.HeaderText = "userId";
+            this.userId.Name = "userId";
+            this.userId.ReadOnly = true;
+            this.userId.Visible = false;
+            // 
+            // NameUser
+            // 
+            this.NameUser.DataPropertyName = "UserName";
+            this.NameUser.HeaderText = "Имя пользователя Windows";
+            this.NameUser.Name = "NameUser";
+            this.NameUser.ReadOnly = true;
+            // 
+            // StartCash
+            // 
+            this.StartCash.DataPropertyName = "StartCash";
+            this.StartCash.HeaderText = "Наличные";
+            this.StartCash.Name = "StartCash";
+            this.StartCash.ReadOnly = true;
+            // 
+            // IsAdmin
+            // 
+            this.IsAdmin.DataPropertyName = "IsAdmin";
+            this.IsAdmin.HeaderText = "Администратор";
+            this.IsAdmin.Name = "IsAdmin";
+            this.IsAdmin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // updateUsers
+            // 
+            this.updateUsers.Location = new System.Drawing.Point(362, 316);
+            this.updateUsers.Name = "updateUsers";
+            this.updateUsers.Size = new System.Drawing.Size(75, 20);
+            this.updateUsers.TabIndex = 4;
+            this.updateUsers.Text = "Обновить";
+            this.updateUsers.UseVisualStyleBackColor = true;
+            this.updateUsers.Click += new System.EventHandler(this.updateUsers_Click);
+            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 361);
+            this.Controls.Add(this.updateUsers);
             this.Controls.Add(this.SelectUserButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.table);
@@ -194,6 +259,12 @@ namespace WindowsForms
         private System.Windows.Forms.Button SelectUserButton;
         private System.Windows.Forms.ToolStripMenuItem операцииСБазойToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CreateNewBase;
+        private System.Windows.Forms.ToolStripMenuItem categoryManager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartCash;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsAdmin;
+        private System.Windows.Forms.Button updateUsers;
     }
 }
 

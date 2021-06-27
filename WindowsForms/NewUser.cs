@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,24 @@ namespace WindowsForms
 {
     public partial class NewUser : Form
     {
+        private IDataManager dataManager;
         private IUserManager userManager;
 
         public string SelectUser
         { get { return this.GetSelectedItem(); } }
+
+        public int StartCash
+        { get { return this.GetStartCash(); } }
+
+        private int GetStartCash()
+        {
+            string inputString = this.startCashText.Text;
+            
+            int cashValue = 0;
+            int.TryParse(inputString, out cashValue);
+            
+            return cashValue;
+        }
 
         private string GetSelectedItem()
         {
@@ -31,7 +46,7 @@ namespace WindowsForms
             this.comboBoxUsers.Items.AddRange(userManager.GetUserNames());
         }
 
-        public NewUser(IUserManager userManager)
+        public NewUser(IDataManager dataManager, IUserManager userManager)
         {
             this.userManager = userManager;
             InitializeComponent();
