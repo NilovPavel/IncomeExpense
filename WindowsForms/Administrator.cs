@@ -68,6 +68,7 @@ namespace WindowsForms
 
         private void CreateNewBase_Click(object sender, EventArgs e)
         {
+            this.dataManager.CreateDatabase();
         }
 
         private void updateUsers_Click(object sender, EventArgs e)
