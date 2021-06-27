@@ -1,5 +1,7 @@
-insert into Categories(CategoryName) values('Категория1')
+use Ascon;
 
-insert into Categories(CategoryName) values('Категория2')
+insert into Categories(CategoryName, enable) values('Категория1', 'true')
 
-insert into Categories(CategoryName) values('Категория3')
+insert into Categories(CategoryName, enable) values('Категория2', 'true')
+
+insert into Categories(CategoryName, enable) values('Категория3', 'true')
