@@ -20,6 +20,8 @@ namespace DatabaseManager
         [Required]
         public string CategoryName { get; set; }
 
+        public bool enable { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Data> Data { get; set; }
     }

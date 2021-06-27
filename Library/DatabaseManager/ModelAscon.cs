@@ -10,6 +10,12 @@ namespace DatabaseManager
         public ModelAscon()
             : base("name=ModelAscon")
         {
+            
+        }
+
+        public void CreateDatabase()
+        {
+            Database.SetInitializer(new DropCreateDatabaseAlways<ModelAscon>());
         }
 
         public virtual DbSet<Categories> Categories { get; set; }
