@@ -32,9 +32,9 @@ namespace WindowsForms
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserManager = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExportDataToReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoryManager = new System.Windows.Forms.ToolStripMenuItem();
             this.Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.операцииСБазойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateNewBase = new System.Windows.Forms.ToolStripMenuItem();
             this.table = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mode = new System.Windows.Forms.ToolStripStatusLabel();
@@ -50,7 +50,8 @@ namespace WindowsForms
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.менюToolStripMenuItem});
+            this.менюToolStripMenuItem,
+            this.операцииСБазойToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(644, 24);
@@ -61,8 +62,6 @@ namespace WindowsForms
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UserManager,
-            this.ExportDataToReport,
-            this.categoryManager,
             this.Exit});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -75,26 +74,27 @@ namespace WindowsForms
             this.UserManager.Text = "Управление пользователями";
             this.UserManager.Click += new System.EventHandler(this.UserManager_Click);
             // 
-            // ExportDataToReport
-            // 
-            this.ExportDataToReport.Enabled = false;
-            this.ExportDataToReport.Name = "ExportDataToReport";
-            this.ExportDataToReport.Size = new System.Drawing.Size(234, 22);
-            this.ExportDataToReport.Text = "Выгрузить данные в отчет";
-            // 
-            // categoryManager
-            // 
-            this.categoryManager.Name = "categoryManager";
-            this.categoryManager.Size = new System.Drawing.Size(234, 22);
-            this.categoryManager.Text = "Управление категориями";
-            this.categoryManager.Click += new System.EventHandler(this.categoryManager_Click);
-            // 
             // Exit
             // 
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(234, 22);
             this.Exit.Text = "Выход";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
+            // операцииСБазойToolStripMenuItem
+            // 
+            this.операцииСБазойToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CreateNewBase});
+            this.операцииСБазойToolStripMenuItem.Name = "операцииСБазойToolStripMenuItem";
+            this.операцииСБазойToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.операцииСБазойToolStripMenuItem.Text = "Операции с базой";
+            // 
+            // CreateNewBase
+            // 
+            this.CreateNewBase.Name = "CreateNewBase";
+            this.CreateNewBase.Size = new System.Drawing.Size(180, 22);
+            this.CreateNewBase.Text = "Создать новую";
+            this.CreateNewBase.Click += new System.EventHandler(this.CreateNewBase_Click);
             // 
             // table
             // 
@@ -185,7 +185,6 @@ namespace WindowsForms
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UserManager;
         private System.Windows.Forms.ToolStripMenuItem Exit;
-        private System.Windows.Forms.ToolStripMenuItem ExportDataToReport;
         private System.Windows.Forms.DataGridView table;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel mode;
@@ -193,7 +192,8 @@ namespace WindowsForms
         private System.Windows.Forms.ToolStripStatusLabel Username;
         private System.Windows.Forms.ToolStripStatusLabel valueOfUsername;
         private System.Windows.Forms.Button SelectUserButton;
-        private System.Windows.Forms.ToolStripMenuItem categoryManager;
+        private System.Windows.Forms.ToolStripMenuItem операцииСБазойToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreateNewBase;
     }
 }
 

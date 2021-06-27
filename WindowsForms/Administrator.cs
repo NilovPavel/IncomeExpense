@@ -16,11 +16,13 @@ namespace WindowsForms
 {
     public partial class Administrator : Form
     {
-        private IUserManager userManager = new MashineUserManager();
-        private IDataManager dataManager = new EFDataManager();
+        private IDataManager dataManager;
+        private IUserManager userManager;
 
-        public Administrator()
+        public Administrator(IDataManager dataManager, IUserManager userManager)
         {
+            this.dataManager = dataManager;
+            this.userManager = userManager;
             InitializeComponent();
         }
 
@@ -38,13 +40,18 @@ namespace WindowsForms
 
         private void UserManager_Click(object sender, EventArgs e)
         {
-
+            this.table.Visible = true;
+            this.table.DataSource = this.dataManager.GetUsers();
         }
 
         private void categoryManager_Click(object sender, EventArgs e)
         {
             CategoryManager categoryManager = new CategoryManager(this.dataManager);
             categoryManager.ShowDialog();
+        }
+
+        private void CreateNewBase_Click(object sender, EventArgs e)
+        {
         }
     }
 }
