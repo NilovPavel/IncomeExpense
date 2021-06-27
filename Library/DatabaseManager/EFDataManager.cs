@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,8 @@ namespace DatabaseManager
 
         void IDataManager.CreateDatabase()
         {
-            ModelAscon modelAscon = new ModelAscon();
+            this.modelAscon.CreateDatabase();
+            ((IDataManager)this).AddNewCategory("Категория 1");
         }
 
         ObservableCollection<Categories> IDataManager.GetCategories()

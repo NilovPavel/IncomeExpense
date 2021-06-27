@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,14 @@
     <ProjectReference Include="..\..\Library\DatabaseManager\DatabaseManager.csproj">
       <Project>{79BD5C0B-9CA2-461B-9AF5-CF7D1E70381B}</Project>
       <Name>DatabaseManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Users\Users.csproj">
+      <Project>{5bbd7a92-e9af-4b2f-b7fb-73826f6b0838}</Project>
+      <Name>Users</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WindowsForms\WindowsForms.csproj">
+      <Project>{A5E86175-80A4-4AB0-A902-5C23CECDD57C}</Project>
+      <Name>WindowsForms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEF", "TestEF.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseManager", "..\..\Library\DatabaseManager\DatabaseManager.csproj", "{79BD5C0B-9CA2-461B-9AF5-CF7D1E70381B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsForms", "..\..\WindowsForms\WindowsForms.csproj", "{A5E86175-80A4-4AB0-A902-5C23CECDD57C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "..\..\Users\Users.csproj", "{5BBD7A92-E9AF-4B2F-B7FB-73826F6B0838}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{79BD5C0B-9CA2-461B-9AF5-CF7D1E70381B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BD5C0B-9CA2-461B-9AF5-CF7D1E70381B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BD5C0B-9CA2-461B-9AF5-CF7D1E70381B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E86175-80A4-4AB0-A902-5C23CECDD57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E86175-80A4-4AB0-A902-5C23CECDD57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E86175-80A4-4AB0-A902-5C23CECDD57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E86175-80A4-4AB0-A902-5C23CECDD57C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BBD7A92-E9AF-4B2F-B7FB-73826F6B0838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BBD7A92-E9AF-4B2F-B7FB-73826F6B0838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BBD7A92-E9AF-4B2F-B7FB-73826F6B0838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BBD7A92-E9AF-4B2F-B7FB-73826F6B0838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
