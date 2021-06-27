@@ -1,6 +1,7 @@
 ﻿using DatabaseManager;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.DirectoryServices;
@@ -67,6 +68,13 @@ namespace WindowsForms
 
         private void CreateNewBase_Click(object sender, EventArgs e)
         {
+        }
+
+        private void updateUsers_Click(object sender, EventArgs e)
+        {
+            ObservableCollection<DatabaseManager.Users> users = (ObservableCollection<DatabaseManager.Users>)this.table.DataSource;
+            foreach (DatabaseManager.Users user in users)
+                this.dataManager.SetUserRole(user.userId, user.IsAdmin);
         }
     }
 }

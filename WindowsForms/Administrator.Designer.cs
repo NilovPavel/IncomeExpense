@@ -46,6 +46,8 @@ namespace WindowsForms
             this.userId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartCash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.updateUsers = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -120,7 +122,8 @@ namespace WindowsForms
             this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.userId,
             this.NameUser,
-            this.StartCash});
+            this.StartCash,
+            this.IsAdmin});
             this.table.DataBindings.Add(new System.Windows.Forms.Binding("AllowUserToAddRows", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.Location = new System.Drawing.Point(0, 27);
@@ -197,11 +200,30 @@ namespace WindowsForms
             this.StartCash.Name = "StartCash";
             this.StartCash.ReadOnly = true;
             // 
+            // IsAdmin
+            // 
+            this.IsAdmin.DataPropertyName = "IsAdmin";
+            this.IsAdmin.HeaderText = "Администратор";
+            this.IsAdmin.Name = "IsAdmin";
+            this.IsAdmin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // updateUsers
+            // 
+            this.updateUsers.Location = new System.Drawing.Point(362, 316);
+            this.updateUsers.Name = "updateUsers";
+            this.updateUsers.Size = new System.Drawing.Size(75, 20);
+            this.updateUsers.TabIndex = 4;
+            this.updateUsers.Text = "Обновить";
+            this.updateUsers.UseVisualStyleBackColor = true;
+            this.updateUsers.Click += new System.EventHandler(this.updateUsers_Click);
+            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 361);
+            this.Controls.Add(this.updateUsers);
             this.Controls.Add(this.SelectUserButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.table);
@@ -241,6 +263,8 @@ namespace WindowsForms
         private System.Windows.Forms.DataGridViewTextBoxColumn userId;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartCash;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsAdmin;
+        private System.Windows.Forms.Button updateUsers;
     }
 }
 
