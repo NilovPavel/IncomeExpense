@@ -105,7 +105,7 @@ namespace WindowsForms
             // произвестиОперациюToolStripMenuItem
             // 
             this.произвестиОперациюToolStripMenuItem.Name = "произвестиОперациюToolStripMenuItem";
-            this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.произвестиОперациюToolStripMenuItem.Text = "Выход";
             // 
             // table
@@ -125,6 +125,7 @@ namespace WindowsForms
             this.table.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.Location = new System.Drawing.Point(0, 27);
             this.table.Name = "table";
+            this.table.RowHeadersVisible = false;
             this.table.Size = new System.Drawing.Size(800, 367);
             this.table.TabIndex = 5;
             // 
@@ -160,6 +161,7 @@ namespace WindowsForms
             this.operationButton.TabIndex = 6;
             this.operationButton.Text = "Произвести операцию";
             this.operationButton.UseVisualStyleBackColor = true;
+            this.operationButton.Click += new System.EventHandler(this.operationButton_Click);
             // 
             // CashManager
             // 

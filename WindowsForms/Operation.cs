@@ -11,24 +11,28 @@ using System.Windows.Forms;
 
 namespace WindowsForms
 {
-    public partial class CashManager : Form
+    public partial class Operation : Form
     {
         private IDataManager dataManager;
-        public CashManager(IDataManager dataManager)
+        public Operation(IDataManager dataManager)
         {
             this.dataManager = dataManager;
             InitializeComponent();
-            Initialization();
+            this.Initialization();
         }
 
         private void Initialization()
         {
+            this.categoriesComboBox.Items.AddRange(this.dataManager.GetCategories().Where(item => item.enable == true).ToArray());
+            this.categoriesComboBox.DisplayMember = "CategoryName";
+
+            this.recipientComboBox.Items.AddRange(this.dataManager.GetRecepients().ToArray());
+            this.recipientComboBox.DisplayMember = "Description";
         }
 
         private void operationButton_Click(object sender, EventArgs e)
         {
-            Operation operation = new Operation(this.dataManager);
-            operation.ShowDialog();
+
         }
     }
 }
