@@ -34,6 +34,9 @@ namespace DatabaseManager
         {
             this.modelAscon.CreateDatabase();
             ((IDataManager)this).AddNewCategory("Категория 1");
+            this.modelAscon.Recepients.Add(new Recepients { Description = "Работодатель" }) ;
+            this.modelAscon.Recepients.Add(new Recepients { Description = "Торговый центр" });
+            this.modelAscon.SaveChanges();
         }
 
         ObservableCollection<Categories> IDataManager.GetCategories()
