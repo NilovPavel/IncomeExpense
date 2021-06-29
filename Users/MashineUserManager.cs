@@ -25,7 +25,7 @@ namespace Users
             SelectQuery query = new SelectQuery("Win32_UserAccount");
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
             foreach (ManagementObject envVar in searcher.Get())
-                usernames.Add((string)envVar["Name"]);
+                usernames.Add((string)envVar["Domain"] + "\\" + (string)envVar["Name"]);
 
             return usernames.ToArray();
         }
