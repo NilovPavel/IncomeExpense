@@ -8,17 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Users;
 
 namespace WindowsForms
 {
     public partial class CashManager : Form
     {
         private IDataManager dataManager;
-        public CashManager(IDataManager dataManager)
+        private IUserManager userManager;
+
+        public CashManager(IDataManager dataManager, IUserManager userManager)
         {
             this.dataManager = dataManager;
+            this.userManager = userManager;
             InitializeComponent();
-            Initialization();
+            this.Initialization();
         }
 
         private void Initialization()
@@ -27,7 +31,7 @@ namespace WindowsForms
 
         private void operationButton_Click(object sender, EventArgs e)
         {
-            Operation operation = new Operation(this.dataManager);
+            Operation operation = new Operation(this.dataManager, this.userManager);
             operation.ShowDialog();
         }
     }

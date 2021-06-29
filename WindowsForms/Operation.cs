@@ -8,15 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Users;
 
 namespace WindowsForms
 {
     public partial class Operation : Form
     {
         private IDataManager dataManager;
-        public Operation(IDataManager dataManager)
+        private IUserManager userManager;
+
+        public Operation(IDataManager dataManager, IUserManager userManager)
         {
             this.dataManager = dataManager;
+            this.userManager = userManager;
             InitializeComponent();
             this.Initialization();
         }
@@ -32,6 +36,11 @@ namespace WindowsForms
 
         private void operationButton_Click(object sender, EventArgs e)
         {
+            Categories category = (Categories) this.categoriesComboBox.SelectedItem;
+            Recepients recepients = (Recepients) this.recipientComboBox.SelectedItem;
+            List<DatabaseManager.Users> users = this.dataManager.GetUsers().ToList();
+            string currentUsername = this.userManager.GetCurrentUserName();
+            DatabaseManager.Users user = this.dataManager.GetUsers().FirstOrDefault(item => item.UserName.Equals(this.userManager.GetCurrentUserName()));
 
         }
     }
