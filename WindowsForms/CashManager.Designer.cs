@@ -38,11 +38,11 @@ namespace WindowsForms
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.произвестиОперациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.table = new System.Windows.Forms.DataGridView();
+            this.operationButton = new System.Windows.Forms.Button();
             this.rowNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Баланс = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operationButton = new System.Windows.Forms.Button();
+            this.Recepient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -120,7 +120,7 @@ namespace WindowsForms
             this.rowNumber,
             this.Category,
             this.Amount,
-            this.Баланс});
+            this.Recepient});
             this.table.DataBindings.Add(new System.Windows.Forms.Binding("AllowUserToAddRows", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.Location = new System.Drawing.Point(0, 27);
@@ -128,6 +128,16 @@ namespace WindowsForms
             this.table.RowHeadersVisible = false;
             this.table.Size = new System.Drawing.Size(800, 367);
             this.table.TabIndex = 5;
+            // 
+            // operationButton
+            // 
+            this.operationButton.Location = new System.Drawing.Point(23, 401);
+            this.operationButton.Name = "operationButton";
+            this.operationButton.Size = new System.Drawing.Size(166, 23);
+            this.operationButton.TabIndex = 6;
+            this.operationButton.Text = "Произвести операцию";
+            this.operationButton.UseVisualStyleBackColor = true;
+            this.operationButton.Click += new System.EventHandler(this.operationButton_Click);
             // 
             // rowNumber
             // 
@@ -147,21 +157,11 @@ namespace WindowsForms
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
             // 
-            // Баланс
+            // Recepient
             // 
-            this.Баланс.HeaderText = "Cash";
-            this.Баланс.Name = "Баланс";
-            this.Баланс.ReadOnly = true;
-            // 
-            // operationButton
-            // 
-            this.operationButton.Location = new System.Drawing.Point(23, 401);
-            this.operationButton.Name = "operationButton";
-            this.operationButton.Size = new System.Drawing.Size(166, 23);
-            this.operationButton.TabIndex = 6;
-            this.operationButton.Text = "Произвести операцию";
-            this.operationButton.UseVisualStyleBackColor = true;
-            this.operationButton.Click += new System.EventHandler(this.operationButton_Click);
+            this.Recepient.HeaderText = "Получатель";
+            this.Recepient.Name = "Recepient";
+            this.Recepient.ReadOnly = true;
             // 
             // CashManager
             // 
@@ -196,10 +196,10 @@ namespace WindowsForms
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem произвестиОперациюToolStripMenuItem;
         private System.Windows.Forms.DataGridView table;
+        private System.Windows.Forms.Button operationButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn rowNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Баланс;
-        private System.Windows.Forms.Button operationButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recepient;
     }
 }
