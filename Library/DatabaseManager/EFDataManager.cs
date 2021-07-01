@@ -78,5 +78,12 @@ namespace DatabaseManager
             user.IsAdmin = isAdmin;
             this.modelAscon.SaveChanges();
         }
+
+        void IDataManager.AddUserOperation(int userId, int categoryId, int recipientId, int amount)
+        {
+            Data data = new Data { userId = userId, categoryId = categoryId, recepientId = recipientId, CashChange = amount };
+            this.modelAscon.Data.Add(data);
+            this.modelAscon.SaveChanges();
+        }
     }
 }

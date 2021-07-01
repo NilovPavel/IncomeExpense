@@ -17,6 +17,8 @@ namespace DatabaseManager
         void UpdateCategory(int idCategory, string category, bool enable);
 
         ObservableCollection<Data> GetData();
+        void AddUserOperation(int userId, int categoryId, int recipient, int amount);
+
         ObservableCollection<Recepients> GetRecepients();
 
         ObservableCollection<Users> GetUsers();
