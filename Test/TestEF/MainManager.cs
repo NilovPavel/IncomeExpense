@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Users;
 using WindowsForms;
 
-namespace TestEF
+namespace MainPackage
 {
     public class MainManager
     {
@@ -40,19 +40,31 @@ namespace TestEF
                 (IUserManager)new ActiveDirectoryUserManager() : (IUserManager)new MashineUserManager();
         }
 
+        private void Dummy()
+        {
+            //Заглушка. Если в базе данных нет пользователя для администрирования, то добавляется первый вошедший
+            if (this.dataManager.GetUsers().Count(item => item.IsAdmin) == 0)
+            {
+                this.dataManager.AddUser(this.userManager.GetCurrentUserName(), 100000);
+                this.dataManager.SetUserRole(this.dataManager.GetUsers().FirstOrDefault().userId, true);
+            }
+        }
+
         public void Run()
         {
             this.Initialization();
 
-            Form currentForm  = this.AdministratorMode ? (Form) new CashManager(this.dataManager, this.userManager) 
-                : (Form)new Administrator(this.dataManager, this.userManager);
+            this.Dummy();
+
+            Form currentForm  = this.AdministratorMode ? (Form)new Administrator(this.dataManager, this.userManager)
+                : (Form) new CashManager(this.dataManager, this.userManager);
             
             currentForm.ShowDialog();
         }
 
         public MainManager()
         {
-            this.Initialization();
+            //this.Initialization();
         }
     }
 }

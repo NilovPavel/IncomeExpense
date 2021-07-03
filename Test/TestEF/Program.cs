@@ -7,16 +7,24 @@ using System.Threading.Tasks;
 using Users;
 using WindowsForms;
 
-namespace TestEF
+namespace MainPackage
 {
     class Program
     {
         static void Main(string[] args)
         {
+            bool isAdmin = false;
+            bool localConnect = true;
+            
+            if(args.Length == 2)
+            {
+                isAdmin = args[0].Equals("admin");
+                localConnect = !args[1].Equals("server");
+            }
+
             MainManager mainManager = new MainManager();
-            mainManager.ActiveDirectoryMode = false;
-            mainManager.AdministratorMode = true;
-            mainManager.LocalConnection = true;
+            mainManager.AdministratorMode = isAdmin;
+            mainManager.LocalConnection = localConnect;
 
             mainManager.Run();
         }
