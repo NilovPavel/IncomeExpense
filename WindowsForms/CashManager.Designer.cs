@@ -37,12 +37,8 @@ namespace WindowsForms
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.произвестиОперациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.table = new System.Windows.Forms.DataGridView();
             this.operationButton = new System.Windows.Forms.Button();
-            this.rowNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Recepient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.table = new System.Windows.Forms.DataGridView();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -108,27 +104,6 @@ namespace WindowsForms
             this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.произвестиОперациюToolStripMenuItem.Text = "Выход";
             // 
-            // table
-            // 
-            this.table.AllowUserToAddRows = global::WindowsForms.Properties.Settings.Default.autogeneratecolumns;
-            this.table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.table.AutoGenerateColumns = global::WindowsForms.Properties.Settings.Default.autogeneratecolumns;
-            this.table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.rowNumber,
-            this.Category,
-            this.Amount,
-            this.Recepient});
-            this.table.DataBindings.Add(new System.Windows.Forms.Binding("AllowUserToAddRows", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.table.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.table.Location = new System.Drawing.Point(0, 27);
-            this.table.Name = "table";
-            this.table.RowHeadersVisible = false;
-            this.table.Size = new System.Drawing.Size(800, 367);
-            this.table.TabIndex = 5;
-            // 
             // operationButton
             // 
             this.operationButton.Location = new System.Drawing.Point(23, 401);
@@ -139,37 +114,28 @@ namespace WindowsForms
             this.operationButton.UseVisualStyleBackColor = true;
             this.operationButton.Click += new System.EventHandler(this.operationButton_Click);
             // 
-            // rowNumber
+            // table
             // 
-            this.rowNumber.HeaderText = "№";
-            this.rowNumber.Name = "rowNumber";
-            this.rowNumber.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Категория";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Стоимость";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            // 
-            // Recepient
-            // 
-            this.Recepient.HeaderText = "Получатель";
-            this.Recepient.Name = "Recepient";
-            this.Recepient.ReadOnly = true;
+            this.table.AllowUserToAddRows = false;
+            this.table.AllowUserToDeleteRows = false;
+            this.table.AllowUserToResizeColumns = false;
+            this.table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.table.Location = new System.Drawing.Point(0, 27);
+            this.table.Name = "table";
+            this.table.RowHeadersVisible = false;
+            this.table.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.table.Size = new System.Drawing.Size(800, 368);
+            this.table.TabIndex = 7;
             // 
             // CashManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.operationButton);
             this.Controls.Add(this.table);
+            this.Controls.Add(this.operationButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -195,11 +161,7 @@ namespace WindowsForms
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem произвестиОперациюToolStripMenuItem;
-        private System.Windows.Forms.DataGridView table;
         private System.Windows.Forms.Button operationButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rowNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Recepient;
+        private System.Windows.Forms.DataGridView table;
     }
 }
