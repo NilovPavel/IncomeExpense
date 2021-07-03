@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{221D2D3F-5478-464A-B2FB-CA7E57D92893}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TestEF</RootNamespace>
-    <AssemblyName>TestEF</AssemblyName>
+    <RootNamespace>MainPackage</RootNamespace>
+    <AssemblyName>MainPackage</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

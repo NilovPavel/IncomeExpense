@@ -7,24 +7,26 @@ using System.Threading.Tasks;
 using Users;
 using WindowsForms;
 
-namespace TestEF
+namespace MainPackage
 {
     class Program
     {
         static void Main(string[] args)
         {
-            /*ModelAscon model = new ModelAscon();
-            List<Users> users = model.Users.ToList();
-            List<Categories> categories = model.Categories.ToList();
-            model.Users.Add(new Users { Cash = 0, Firstname = "Иван", Lastname = "Иванов" });
-            model.SaveChanges();*/
+            bool isAdmin = false;
+            bool localConnect = true;
+            
+            if(args.Length == 2)
+            {
+                isAdmin = args[0].Equals("admin");
+                localConnect = !args[1].Equals("server");
+            }
 
-            IDataManager dataManager = new EFDataManager();
-            //dataManager.CreateDatabase();
-            IUserManager userManager = new MashineUserManager();
+            MainManager mainManager = new MainManager();
+            mainManager.AdministratorMode = isAdmin;
+            mainManager.LocalConnection = localConnect;
 
-            Administrator administrator = new Administrator(dataManager, userManager);
-            administrator.ShowDialog();
+            mainManager.Run();
         }
     }
 }
