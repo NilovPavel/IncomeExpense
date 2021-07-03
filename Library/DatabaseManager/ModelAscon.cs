@@ -8,7 +8,7 @@ namespace DatabaseManager
     public partial class ModelAscon : DbContext
     {
         public ModelAscon()
-            : base("name=ModelAscon")
+            : base("name=LocalModelAscon")
         {
             
         }
