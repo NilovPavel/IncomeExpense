@@ -66,5 +66,10 @@ namespace WindowsForms
             operation.ShowDialog();
             this.BuildTransactions();
         }
+
+        private void произвестиОперациюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

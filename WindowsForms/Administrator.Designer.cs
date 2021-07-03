@@ -37,17 +37,18 @@ namespace WindowsForms
             this.операцииСБазойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewBase = new System.Windows.Forms.ToolStripMenuItem();
             this.table = new System.Windows.Forms.DataGridView();
+            this.userId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartCash = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mode = new System.Windows.Forms.ToolStripStatusLabel();
             this.valueOfMode = new System.Windows.Forms.ToolStripStatusLabel();
             this.Username = new System.Windows.Forms.ToolStripStatusLabel();
             this.valueOfUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.SelectUserButton = new System.Windows.Forms.Button();
-            this.userId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartCash = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsAdmin = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.updateUsers = new System.Windows.Forms.Button();
+            this.войтиВРежимПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -69,6 +70,7 @@ namespace WindowsForms
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UserManager,
             this.categoryManager,
+            this.войтиВРежимПользователяToolStripMenuItem,
             this.Exit});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -77,21 +79,21 @@ namespace WindowsForms
             // UserManager
             // 
             this.UserManager.Name = "UserManager";
-            this.UserManager.Size = new System.Drawing.Size(234, 22);
+            this.UserManager.Size = new System.Drawing.Size(235, 22);
             this.UserManager.Text = "Управление пользователями";
             this.UserManager.Click += new System.EventHandler(this.UserManager_Click);
             // 
             // categoryManager
             // 
             this.categoryManager.Name = "categoryManager";
-            this.categoryManager.Size = new System.Drawing.Size(234, 22);
+            this.categoryManager.Size = new System.Drawing.Size(235, 22);
             this.categoryManager.Text = "Управление категориями";
             this.categoryManager.Click += new System.EventHandler(this.categoryManager_Click);
             // 
             // Exit
             // 
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(234, 22);
+            this.Exit.Size = new System.Drawing.Size(235, 22);
             this.Exit.Text = "Выход";
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
@@ -106,7 +108,7 @@ namespace WindowsForms
             // CreateNewBase
             // 
             this.CreateNewBase.Name = "CreateNewBase";
-            this.CreateNewBase.Size = new System.Drawing.Size(156, 22);
+            this.CreateNewBase.Size = new System.Drawing.Size(180, 22);
             this.CreateNewBase.Text = "Создать новую";
             this.CreateNewBase.Click += new System.EventHandler(this.CreateNewBase_Click);
             // 
@@ -131,6 +133,36 @@ namespace WindowsForms
             this.table.Size = new System.Drawing.Size(644, 283);
             this.table.TabIndex = 1;
             this.table.Visible = false;
+            // 
+            // userId
+            // 
+            this.userId.DataPropertyName = "UserName";
+            this.userId.HeaderText = "userId";
+            this.userId.Name = "userId";
+            this.userId.ReadOnly = true;
+            this.userId.Visible = false;
+            // 
+            // NameUser
+            // 
+            this.NameUser.DataPropertyName = "UserName";
+            this.NameUser.HeaderText = "Имя пользователя Windows";
+            this.NameUser.Name = "NameUser";
+            this.NameUser.ReadOnly = true;
+            // 
+            // StartCash
+            // 
+            this.StartCash.DataPropertyName = "StartCash";
+            this.StartCash.HeaderText = "Наличные";
+            this.StartCash.Name = "StartCash";
+            this.StartCash.ReadOnly = true;
+            // 
+            // IsAdmin
+            // 
+            this.IsAdmin.DataPropertyName = "IsAdmin";
+            this.IsAdmin.HeaderText = "Администратор";
+            this.IsAdmin.Name = "IsAdmin";
+            this.IsAdmin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // statusStrip1
             // 
@@ -178,36 +210,6 @@ namespace WindowsForms
             this.SelectUserButton.UseVisualStyleBackColor = true;
             this.SelectUserButton.Click += new System.EventHandler(this.SelectUserButton_Click);
             // 
-            // userId
-            // 
-            this.userId.DataPropertyName = "UserName";
-            this.userId.HeaderText = "userId";
-            this.userId.Name = "userId";
-            this.userId.ReadOnly = true;
-            this.userId.Visible = false;
-            // 
-            // NameUser
-            // 
-            this.NameUser.DataPropertyName = "UserName";
-            this.NameUser.HeaderText = "Имя пользователя Windows";
-            this.NameUser.Name = "NameUser";
-            this.NameUser.ReadOnly = true;
-            // 
-            // StartCash
-            // 
-            this.StartCash.DataPropertyName = "StartCash";
-            this.StartCash.HeaderText = "Наличные";
-            this.StartCash.Name = "StartCash";
-            this.StartCash.ReadOnly = true;
-            // 
-            // IsAdmin
-            // 
-            this.IsAdmin.DataPropertyName = "IsAdmin";
-            this.IsAdmin.HeaderText = "Администратор";
-            this.IsAdmin.Name = "IsAdmin";
-            this.IsAdmin.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsAdmin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // updateUsers
             // 
             this.updateUsers.Location = new System.Drawing.Point(362, 316);
@@ -217,6 +219,13 @@ namespace WindowsForms
             this.updateUsers.Text = "Обновить";
             this.updateUsers.UseVisualStyleBackColor = true;
             this.updateUsers.Click += new System.EventHandler(this.updateUsers_Click);
+            // 
+            // войтиВРежимПользователяToolStripMenuItem
+            // 
+            this.войтиВРежимПользователяToolStripMenuItem.Name = "войтиВРежимПользователяToolStripMenuItem";
+            this.войтиВРежимПользователяToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.войтиВРежимПользователяToolStripMenuItem.Text = "Войти в режим пользователя";
+            this.войтиВРежимПользователяToolStripMenuItem.Click += new System.EventHandler(this.войтиВРежимПользователяToolStripMenuItem_Click);
             // 
             // Administrator
             // 
@@ -265,6 +274,7 @@ namespace WindowsForms
         private System.Windows.Forms.DataGridViewTextBoxColumn StartCash;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsAdmin;
         private System.Windows.Forms.Button updateUsers;
+        private System.Windows.Forms.ToolStripMenuItem войтиВРежимПользователяToolStripMenuItem;
     }
 }
 

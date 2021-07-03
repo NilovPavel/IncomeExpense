@@ -101,8 +101,9 @@ namespace WindowsForms
             // произвестиОперациюToolStripMenuItem
             // 
             this.произвестиОперациюToolStripMenuItem.Name = "произвестиОперациюToolStripMenuItem";
-            this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.произвестиОперациюToolStripMenuItem.Text = "Выход";
+            this.произвестиОперациюToolStripMenuItem.Click += new System.EventHandler(this.произвестиОперациюToolStripMenuItem_Click);
             // 
             // operationButton
             // 

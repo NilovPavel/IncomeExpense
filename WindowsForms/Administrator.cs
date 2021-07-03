@@ -77,5 +77,11 @@ namespace WindowsForms
             foreach (DatabaseManager.Users user in users)
                 this.dataManager.SetUserRole(user.userId, user.IsAdmin);
         }
+
+        private void войтиВРежимПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CashManager cashManager = new CashManager(this.dataManager, this.userManager);
+            cashManager.ShowDialog();
+        }
     }
 }
