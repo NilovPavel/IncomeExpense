@@ -60,6 +60,7 @@ namespace WindowsForms
         {
             Operation operation = new Operation(this.dataManager, this.userManager);
             operation.ShowDialog();
+            this.BuildTransactions();
         }
     }
 }
