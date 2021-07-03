@@ -46,7 +46,8 @@ namespace WindowsForms
                                     Amount = dataTable.CashChange,
                                     Recepient = recepientTable.Description
                                 }).ToList();
-            //currentTransactions.ForEach(item => this.transactions.Add(item));
+
+            currentTransactions.ForEach(item => this.transactions.Add(item));
         }
 
         private void Initialization()
