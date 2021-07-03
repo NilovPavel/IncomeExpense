@@ -8,14 +8,16 @@ namespace DatabaseManager
     public partial class ModelAscon : DbContext
     {
         public ModelAscon()
-            : base("name=ModelAscon")
+            : base("name=ServerModelAscon")
         {
             
         }
 
         public void CreateDatabase()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<ModelAscon>());
+            //CreateDatabaseIfNotExists
+            //DropCreateDatabaseAlways
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ModelAscon>());
         }
 
         public virtual DbSet<Categories> Categories { get; set; }
