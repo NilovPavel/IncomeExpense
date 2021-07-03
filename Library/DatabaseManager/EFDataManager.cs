@@ -13,9 +13,9 @@ namespace DatabaseManager
     {
         private ModelAscon modelAscon;
 
-        public EFDataManager()
+        public EFDataManager(string serverConncetion)
         {
-            this.modelAscon = new ModelAscon();    
+            this.modelAscon = new ModelAscon(serverConncetion);    
         }
 
         void IDataManager.AddNewCategory(string category)
