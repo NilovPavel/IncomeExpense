@@ -13,9 +13,9 @@ namespace DatabaseManager
     {
         private ModelAscon modelAscon;
 
-        public EFDataManager()
+        public EFDataManager(string serverConncetion)
         {
-            this.modelAscon = new ModelAscon();    
+            this.modelAscon = new ModelAscon(serverConncetion);    
         }
 
         void IDataManager.AddNewCategory(string category)
@@ -76,6 +76,13 @@ namespace DatabaseManager
         {
             Users user = this.modelAscon.Users.FirstOrDefault(item => item.userId == userId);
             user.IsAdmin = isAdmin;
+            this.modelAscon.SaveChanges();
+        }
+
+        void IDataManager.AddUserOperation(int userId, int categoryId, int recipientId, int amount)
+        {
+            Data data = new Data { userId = userId, categoryId = categoryId, recepientId = recipientId, CashChange = amount };
+            this.modelAscon.Data.Add(data);
             this.modelAscon.SaveChanges();
         }
     }

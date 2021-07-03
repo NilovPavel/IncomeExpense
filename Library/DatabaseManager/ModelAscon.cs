@@ -7,10 +7,14 @@ namespace DatabaseManager
 {
     public partial class ModelAscon : DbContext
     {
-        public ModelAscon()
+        /*public ModelAscon()
             : base("name=ModelAscon")
         {
             
+        }*/
+
+        public ModelAscon(string nameOrConnectionString) : base("name=" + nameOrConnectionString)
+        {
         }
 
         public void CreateDatabase()

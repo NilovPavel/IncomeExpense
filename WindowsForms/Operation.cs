@@ -38,10 +38,10 @@ namespace WindowsForms
         {
             Categories category = (Categories) this.categoriesComboBox.SelectedItem;
             Recepients recepients = (Recepients) this.recipientComboBox.SelectedItem;
-            List<DatabaseManager.Users> users = this.dataManager.GetUsers().ToList();
-            string currentUsername = this.userManager.GetCurrentUserName();
             DatabaseManager.Users user = this.dataManager.GetUsers().FirstOrDefault(item => item.UserName.Equals(this.userManager.GetCurrentUserName()));
 
+            int amount = int.Parse(this.summTextBox.Text) * (this.isEnrollmentCheckBox.Checked ? 1 : -1);
+            this.dataManager.AddUserOperation(user.userId, category.categoryId, recepients.recepientId, amount);
         }
     }
 }
