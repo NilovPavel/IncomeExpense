@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -18,16 +20,24 @@ namespace Users
 
         string[] IUserManager.GetUserNames()
         {
-            throw new NotImplementedException();
-            /*UserPrincipal.Current.
-            using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
+            List<string> usernames = new List<string>();
+            using (var context = new PrincipalContext(ContextType.Domain, "yourdomain.com"))
             {
-                UserPrincipal user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, "login");
-                foreach (var group in user.GetGroups())
+                using (var searcher = new PrincipalSearcher(new UserPrincipal(context)))
                 {
-                    Console.WriteLine(group.Name);
+                    foreach (var result in searcher.FindAll())
+                    {
+                        DirectoryEntry de = result.GetUnderlyingObject() as DirectoryEntry;
+                        /*Console.WriteLine("First Name: " + de.Properties["givenName"].Value);
+                        Console.WriteLine("Last Name : " + de.Properties["sn"].Value);
+                        Console.WriteLine("SAM account name   : " + de.Properties["samAccountName"].Value);
+                        Console.WriteLine("User principal name: " + de.Properties["userPrincipalName"].Value);
+                        Console.WriteLine();*/
+                        usernames.Add(de.Properties["samAccountName"].Value.ToString());
+                    }
                 }
-            }*/
+            }
+            return usernames.ToArray();
         }
     }
 }
