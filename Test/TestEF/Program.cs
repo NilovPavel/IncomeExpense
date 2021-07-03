@@ -13,18 +13,12 @@ namespace TestEF
     {
         static void Main(string[] args)
         {
-            /*ModelAscon model = new ModelAscon();
-            List<Users> users = model.Users.ToList();
-            List<Categories> categories = model.Categories.ToList();
-            model.Users.Add(new Users { Cash = 0, Firstname = "Иван", Lastname = "Иванов" });
-            model.SaveChanges();*/
+            MainManager mainManager = new MainManager();
+            mainManager.ActiveDirectoryMode = false;
+            mainManager.AdministratorMode = true;
+            mainManager.LocalConnection = true;
 
-            IDataManager dataManager = new EFDataManager();
-            //dataManager.CreateDatabase();
-            IUserManager userManager = new MashineUserManager();
-
-            Administrator administrator = new Administrator(dataManager, userManager);
-            administrator.ShowDialog();
+            mainManager.Run();
         }
     }
 }
