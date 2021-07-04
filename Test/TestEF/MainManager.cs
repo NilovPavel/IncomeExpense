@@ -14,6 +14,7 @@ namespace MainPackage
     {
         private IDataManager dataManager;
         private IUserManager userManager;
+        private DatabaseManager.Users currentUser;
 
         /// <summary>
         /// Задает значение, которое указывает тип соединения (true - БД в файле, false - БД на сервере)
@@ -38,6 +39,8 @@ namespace MainPackage
             
             this.userManager = this.ActiveDirectoryMode ? 
                 (IUserManager)new ActiveDirectoryUserManager() : (IUserManager)new MashineUserManager();
+
+            this.currentUser = this.dataManager.GetUsers().FirstOrDefault(item => item.UserName.Equals(this.userManager.GetCurrentUserName()));
         }
 
         private void Dummy()
@@ -56,7 +59,7 @@ namespace MainPackage
 
             this.Dummy();
 
-            Form currentForm  = this.AdministratorMode ? (Form)new Administrator(this.dataManager, this.userManager)
+            Form currentForm  = (this.AdministratorMode && this.currentUser.IsAdmin) ? (Form)new Administrator(this.dataManager, this.userManager)
                 : (Form) new CashManager(this.dataManager, this.userManager);
             
             currentForm.ShowDialog();
