@@ -1,10 +1,13 @@
 ﻿using DatabaseManager;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +73,30 @@ namespace WindowsForms
         private void произвестиОперациюToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void WriteCollection(ISheet sheet)
+        {
+            for (int i = 0; i < this.transactions.Count; i++)
+            {
+                IRow row = sheet.CreateRow(i);
+                row.CreateCell(0).SetCellValue(this.transactions[i].TransactionId);
+                row.CreateCell(1).SetCellValue(this.transactions[i].CategoryName);
+                row.CreateCell(2).SetCellValue(this.transactions[i].Amount);
+                row.CreateCell(3).SetCellValue(this.transactions[i].Recepient);
+            }
+        }
+
+        private void exportToFile_Click(object sender, EventArgs e)
+        {
+            IWorkbook workbook = new XSSFWorkbook();
+
+            using (FileStream stream = new FileStream("outfile.xlsx", FileMode.Create, FileAccess.Write))
+            {
+                ISheet sheet = workbook.CreateSheet("Export");
+                this.WriteCollection(sheet);
+                workbook.Write(stream);
+            }
         }
     }
 }
