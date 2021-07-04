@@ -98,10 +98,5 @@ namespace WindowsForms
                 workbook.Write(stream);
             }
         }
-
-        /*void WriteCollection(ISheet sheet)
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }
