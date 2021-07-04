@@ -39,6 +39,7 @@ namespace WindowsForms
             this.произвестиОперациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operationButton = new System.Windows.Forms.Button();
             this.table = new System.Windows.Forms.DataGridView();
+            this.exportToFile = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -93,6 +94,7 @@ namespace WindowsForms
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToFile,
             this.произвестиОперациюToolStripMenuItem});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -130,6 +132,13 @@ namespace WindowsForms
             this.table.Size = new System.Drawing.Size(800, 368);
             this.table.TabIndex = 7;
             // 
+            // exportToFile
+            // 
+            this.exportToFile.Name = "exportToFile";
+            this.exportToFile.Size = new System.Drawing.Size(180, 22);
+            this.exportToFile.Text = "Экспорт в файл";
+            this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
+            // 
             // CashManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,5 +173,6 @@ namespace WindowsForms
         private System.Windows.Forms.ToolStripMenuItem произвестиОперациюToolStripMenuItem;
         private System.Windows.Forms.Button operationButton;
         private System.Windows.Forms.DataGridView table;
+        private System.Windows.Forms.ToolStripMenuItem exportToFile;
     }
 }
