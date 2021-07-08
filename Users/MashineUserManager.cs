@@ -15,7 +15,8 @@ namespace Users
         {
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT UserName FROM Win32_ComputerSystem");
             ManagementObjectCollection collection = searcher.Get();
-            string username = (string)collection.Cast<ManagementBaseObject>().First()["UserName"];
+            string username = Environment.UserDomainName + "\\" + Environment.UserName;
+            //(string)collection.Cast<ManagementBaseObject>().First()["UserName"];
             return username;
         }
 
