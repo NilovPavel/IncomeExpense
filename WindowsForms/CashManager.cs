@@ -31,15 +31,9 @@ namespace WindowsForms
             this.BuildTransactions();
         }
 
-        private ObservableCollection<TransactionValues> BuildTransactions()
+        private List<TransactionValues> ConsolidateEntities(List<DatabaseManager.Users> users, List<DatabaseManager.Recepients> recepients,
+            List<DatabaseManager.Categories> categories, List<DatabaseManager.Data> datas)
         {
-            ObservableCollection<TransactionValues> transactions = new ObservableCollection<TransactionValues>();
-
-            List<DatabaseManager.Users> users = this.dataManager.GetUsers().ToList();
-            List<DatabaseManager.Recepients> recepients = this.dataManager.GetRecepients().ToList();
-            List<DatabaseManager.Categories> categories = this.dataManager.GetCategories().ToList();
-            List<DatabaseManager.Data> datas = this.dataManager.GetData().ToList();
-
             List<TransactionValues> currentTransactions =
                 (from dataTable in datas
                  join userTable in users on dataTable.userId equals userTable.userId
@@ -53,6 +47,20 @@ namespace WindowsForms
                      Amount = dataTable.CashChange,
                      Recepient = recepientTable.Description
                  }).ToList();
+
+            return currentTransactions;
+        }
+
+        private ObservableCollection<TransactionValues> BuildTransactions()
+        {
+            ObservableCollection<TransactionValues> transactions = new ObservableCollection<TransactionValues>();
+
+            List<DatabaseManager.Users> users = this.dataManager.GetUsers().ToList();
+            List<DatabaseManager.Recepients> recepients = this.dataManager.GetRecepients().ToList();
+            List<DatabaseManager.Categories> categories = this.dataManager.GetCategories().ToList();
+            List<DatabaseManager.Data> datas = this.dataManager.GetData().ToList();
+
+            List<TransactionValues> currentTransactions = this.ConsolidateEntities(users, recepients, categories, datas);
             
             currentTransactions.ForEach(item => transactions.Add(item));
 
@@ -61,7 +69,6 @@ namespace WindowsForms
 
         private void Initialization()
         {
-            //this.transactions = new ObservableCollection<TransactionValues>();
             this.valueOfMode.Text = "Пользователь";
             this.valueOfUsername.Text = this.userManager.GetCurrentUserName();
             this.table.DataSource = this.BuildTransactions();
