@@ -36,10 +36,14 @@ namespace WindowsForms
             this.valueOfUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToFile = new System.Windows.Forms.ToolStripMenuItem();
             this.произвестиОперациюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operationButton = new System.Windows.Forms.Button();
             this.table = new System.Windows.Forms.DataGridView();
-            this.exportToFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.TransactionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Recepient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
@@ -100,10 +104,17 @@ namespace WindowsForms
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
             // 
+            // exportToFile
+            // 
+            this.exportToFile.Name = "exportToFile";
+            this.exportToFile.Size = new System.Drawing.Size(160, 22);
+            this.exportToFile.Text = "Экспорт в файл";
+            this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
+            // 
             // произвестиОперациюToolStripMenuItem
             // 
             this.произвестиОперациюToolStripMenuItem.Name = "произвестиОперациюToolStripMenuItem";
-            this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.произвестиОперациюToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.произвестиОперациюToolStripMenuItem.Text = "Выход";
             this.произвестиОперациюToolStripMenuItem.Click += new System.EventHandler(this.произвестиОперациюToolStripMenuItem_Click);
             // 
@@ -125,6 +136,11 @@ namespace WindowsForms
             this.table.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TransactionId,
+            this.CategoryName,
+            this.Amount,
+            this.Recepient});
             this.table.Location = new System.Drawing.Point(0, 27);
             this.table.Name = "table";
             this.table.RowHeadersVisible = false;
@@ -132,12 +148,33 @@ namespace WindowsForms
             this.table.Size = new System.Drawing.Size(800, 368);
             this.table.TabIndex = 7;
             // 
-            // exportToFile
+            // TransactionId
             // 
-            this.exportToFile.Name = "exportToFile";
-            this.exportToFile.Size = new System.Drawing.Size(180, 22);
-            this.exportToFile.Text = "Экспорт в файл";
-            this.exportToFile.Click += new System.EventHandler(this.exportToFile_Click);
+            this.TransactionId.DataPropertyName = "TransactionId";
+            this.TransactionId.HeaderText = "Номер транзакции";
+            this.TransactionId.Name = "TransactionId";
+            this.TransactionId.ReadOnly = true;
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.DataPropertyName = "CategoryName";
+            this.CategoryName.HeaderText = "Категория";
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.ReadOnly = true;
+            // 
+            // Amount
+            // 
+            this.Amount.DataPropertyName = "Amount";
+            this.Amount.HeaderText = "Доход/Расход";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            // 
+            // Recepient
+            // 
+            this.Recepient.DataPropertyName = "Recepient";
+            this.Recepient.HeaderText = "Контрагент";
+            this.Recepient.Name = "Recepient";
+            this.Recepient.ReadOnly = true;
             // 
             // CashManager
             // 
@@ -174,5 +211,9 @@ namespace WindowsForms
         private System.Windows.Forms.Button operationButton;
         private System.Windows.Forms.DataGridView table;
         private System.Windows.Forms.ToolStripMenuItem exportToFile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Recepient;
     }
 }

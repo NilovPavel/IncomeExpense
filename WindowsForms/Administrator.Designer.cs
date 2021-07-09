@@ -33,6 +33,7 @@ namespace WindowsForms
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserManager = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryManager = new System.Windows.Forms.ToolStripMenuItem();
+            this.войтиВРежимПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.операцииСБазойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewBase = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,6 @@ namespace WindowsForms
             this.valueOfUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.SelectUserButton = new System.Windows.Forms.Button();
             this.updateUsers = new System.Windows.Forms.Button();
-            this.войтиВРежимПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -90,6 +90,13 @@ namespace WindowsForms
             this.categoryManager.Text = "Управление категориями";
             this.categoryManager.Click += new System.EventHandler(this.categoryManager_Click);
             // 
+            // войтиВРежимПользователяToolStripMenuItem
+            // 
+            this.войтиВРежимПользователяToolStripMenuItem.Name = "войтиВРежимПользователяToolStripMenuItem";
+            this.войтиВРежимПользователяToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.войтиВРежимПользователяToolStripMenuItem.Text = "Войти в режим пользователя";
+            this.войтиВРежимПользователяToolStripMenuItem.Click += new System.EventHandler(this.войтиВРежимПользователяToolStripMenuItem_Click);
+            // 
             // Exit
             // 
             this.Exit.Name = "Exit";
@@ -130,9 +137,9 @@ namespace WindowsForms
             this.table.DataBindings.Add(new System.Windows.Forms.Binding("AutoGenerateColumns", global::WindowsForms.Properties.Settings.Default, "autogeneratecolumns", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.table.Location = new System.Drawing.Point(0, 27);
             this.table.Name = "table";
+            this.table.RowHeadersVisible = false;
             this.table.Size = new System.Drawing.Size(644, 283);
             this.table.TabIndex = 1;
-            this.table.Visible = false;
             // 
             // userId
             // 
@@ -220,13 +227,6 @@ namespace WindowsForms
             this.updateUsers.UseVisualStyleBackColor = true;
             this.updateUsers.Click += new System.EventHandler(this.updateUsers_Click);
             // 
-            // войтиВРежимПользователяToolStripMenuItem
-            // 
-            this.войтиВРежимПользователяToolStripMenuItem.Name = "войтиВРежимПользователяToolStripMenuItem";
-            this.войтиВРежимПользователяToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.войтиВРежимПользователяToolStripMenuItem.Text = "Войти в режим пользователя";
-            this.войтиВРежимПользователяToolStripMenuItem.Click += new System.EventHandler(this.войтиВРежимПользователяToolStripMenuItem_Click);
-            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +237,7 @@ namespace WindowsForms
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.table);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(660, 400);

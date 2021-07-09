@@ -50,7 +50,7 @@ namespace WindowsForms
             // selectCategory
             // 
             this.selectCategory.AutoSize = true;
-            this.selectCategory.Location = new System.Drawing.Point(12, 22);
+            this.selectCategory.Location = new System.Drawing.Point(12, 20);
             this.selectCategory.Name = "selectCategory";
             this.selectCategory.Size = new System.Drawing.Size(114, 13);
             this.selectCategory.TabIndex = 1;
@@ -59,7 +59,7 @@ namespace WindowsForms
             // recipientLabel
             // 
             this.recipientLabel.AutoSize = true;
-            this.recipientLabel.Location = new System.Drawing.Point(10, 71);
+            this.recipientLabel.Location = new System.Drawing.Point(10, 69);
             this.recipientLabel.Name = "recipientLabel";
             this.recipientLabel.Size = new System.Drawing.Size(66, 13);
             this.recipientLabel.TabIndex = 2;
@@ -107,7 +107,7 @@ namespace WindowsForms
             this.summTextBox.Location = new System.Drawing.Point(12, 140);
             this.summTextBox.Mask = "0000000";
             this.summTextBox.Name = "summTextBox";
-            this.summTextBox.Size = new System.Drawing.Size(100, 20);
+            this.summTextBox.Size = new System.Drawing.Size(86, 20);
             this.summTextBox.TabIndex = 7;
             this.summTextBox.ValidatingType = typeof(int);
             // 
@@ -124,6 +124,9 @@ namespace WindowsForms
             this.Controls.Add(this.recipientLabel);
             this.Controls.Add(this.selectCategory);
             this.Controls.Add(this.categoriesComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(250, 276);
+            this.MinimumSize = new System.Drawing.Size(250, 276);
             this.Name = "Operation";
             this.Text = "Operation";
             this.ResumeLayout(false);

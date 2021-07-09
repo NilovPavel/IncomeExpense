@@ -64,10 +64,12 @@ namespace WindowsForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 88);
+            this.ClientSize = new System.Drawing.Size(424, 86);
             this.Controls.Add(this.AddCategoryBurron);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "NewCategory";
             this.Text = "NewCategory";
             this.ResumeLayout(false);

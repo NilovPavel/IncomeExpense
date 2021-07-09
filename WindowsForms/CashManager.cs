@@ -20,7 +20,7 @@ namespace WindowsForms
     {
         private IDataManager dataManager;
         private IUserManager userManager;
-        private ObservableCollection<TransactionValues> transactions;
+        //private ObservableCollection<TransactionValues> transactions;
 
         public CashManager(IDataManager dataManager, IUserManager userManager)
         {
@@ -31,8 +31,10 @@ namespace WindowsForms
             this.BuildTransactions();
         }
 
-        private void BuildTransactions()
+        private ObservableCollection<TransactionValues> BuildTransactions()
         {
+            ObservableCollection<TransactionValues> transactions = new ObservableCollection<TransactionValues>();
+
             List<DatabaseManager.Users> users = this.dataManager.GetUsers().ToList();
             List<DatabaseManager.Recepients> recepients = this.dataManager.GetRecepients().ToList();
             List<DatabaseManager.Categories> categories = this.dataManager.GetCategories().ToList();
@@ -51,23 +53,25 @@ namespace WindowsForms
                      Amount = dataTable.CashChange,
                      Recepient = recepientTable.Description
                  }).ToList();
+            
+            currentTransactions.ForEach(item => transactions.Add(item));
 
-            currentTransactions.ForEach(item => this.transactions.Add(item));
+            return transactions;
         }
 
         private void Initialization()
         {
-            this.transactions = new ObservableCollection<TransactionValues>();
+            //this.transactions = new ObservableCollection<TransactionValues>();
             this.valueOfMode.Text = "Пользователь";
             this.valueOfUsername.Text = this.userManager.GetCurrentUserName();
-            this.table.DataSource = this.transactions;
+            this.table.DataSource = this.BuildTransactions();
         }
 
         private void operationButton_Click(object sender, EventArgs e)
         {
             Operation operation = new Operation(this.dataManager, this.userManager);
             operation.ShowDialog();
-            this.BuildTransactions();
+            this.table.DataSource = this.BuildTransactions();
         }
 
         private void произвестиОперациюToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,21 +81,31 @@ namespace WindowsForms
 
         private void WriteCollection(ISheet sheet)
         {
-            for (int i = 0; i < this.transactions.Count; i++)
+            ObservableCollection<TransactionValues> transactions = (ObservableCollection<TransactionValues>)this.table.DataSource;
+
+            for (int i = 0; i < transactions.Count; i++)
             {
                 IRow row = sheet.CreateRow(i);
-                row.CreateCell(0).SetCellValue(this.transactions[i].TransactionId);
-                row.CreateCell(1).SetCellValue(this.transactions[i].CategoryName);
-                row.CreateCell(2).SetCellValue(this.transactions[i].Amount);
-                row.CreateCell(3).SetCellValue(this.transactions[i].Recepient);
+                row.CreateCell(0).SetCellValue(transactions[i].TransactionId);
+                row.CreateCell(1).SetCellValue(transactions[i].CategoryName);
+                row.CreateCell(2).SetCellValue(transactions[i].Amount);
+                row.CreateCell(3).SetCellValue(transactions[i].Recepient);
             }
         }
 
         private void exportToFile_Click(object sender, EventArgs e)
         {
-            IWorkbook workbook = new XSSFWorkbook();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "excel2007|*.xlsx";
+            DialogResult dialogResult = openFileDialog.ShowDialog();
 
-            using (FileStream stream = new FileStream("outfile.xlsx", FileMode.Create, FileAccess.Write))
+            string filename = dialogResult == DialogResult.OK ? openFileDialog.FileName : string.Empty;
+
+            if (dialogResult != DialogResult.OK)
+                return;
+
+            IWorkbook workbook = new XSSFWorkbook();
+            using (FileStream stream = new FileStream(filename, FileMode.Create, FileAccess.Write))
             {
                 ISheet sheet = workbook.CreateSheet("Export");
                 this.WriteCollection(sheet);
