@@ -12,14 +12,19 @@ namespace DatabaseManager
         {
             
         }*/
+        private string connection;
 
         public ModelAscon(string nameOrConnectionString) : base("name=" + nameOrConnectionString)
         {
+            this.connection = nameOrConnectionString;
         }
 
         public void CreateDatabase()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<ModelAscon>());
+            if (this.connection.Equals("ServerModelAscon"))
+                Database.SetInitializer(new CreateDatabaseIfNotExists<ModelAscon>());
+            else
+                Database.SetInitializer(new DropCreateDatabaseAlways<ModelAscon>());
         }
 
         public virtual DbSet<Categories> Categories { get; set; }

@@ -31,9 +31,9 @@ namespace WindowsForms
         {
             this.UserChoice = new System.Windows.Forms.Button();
             this.comboBoxUsers = new System.Windows.Forms.ComboBox();
-            this.startCashText = new System.Windows.Forms.TextBox();
             this.UserLabel = new System.Windows.Forms.Label();
             this.startCash = new System.Windows.Forms.Label();
+            this.startCashText = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // UserChoice
@@ -54,13 +54,6 @@ namespace WindowsForms
             this.comboBoxUsers.Size = new System.Drawing.Size(171, 21);
             this.comboBoxUsers.TabIndex = 1;
             // 
-            // startCashText
-            // 
-            this.startCashText.Location = new System.Drawing.Point(190, 28);
-            this.startCashText.Name = "startCashText";
-            this.startCashText.Size = new System.Drawing.Size(109, 20);
-            this.startCashText.TabIndex = 2;
-            // 
             // UserLabel
             // 
             this.UserLabel.AutoSize = true;
@@ -79,16 +72,26 @@ namespace WindowsForms
             this.startCash.TabIndex = 4;
             this.startCash.Text = "Стартовый капитал";
             // 
+            // startCashText
+            // 
+            this.startCashText.Location = new System.Drawing.Point(193, 28);
+            this.startCashText.Mask = "0000000";
+            this.startCashText.Name = "startCashText";
+            this.startCashText.Size = new System.Drawing.Size(103, 20);
+            this.startCashText.TabIndex = 8;
+            this.startCashText.ValidatingType = typeof(int);
+            // 
             // NewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 61);
+            this.Controls.Add(this.startCashText);
             this.Controls.Add(this.startCash);
             this.Controls.Add(this.UserLabel);
-            this.Controls.Add(this.startCashText);
             this.Controls.Add(this.comboBoxUsers);
             this.Controls.Add(this.UserChoice);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(400, 100);
             this.MinimumSize = new System.Drawing.Size(400, 100);
             this.Name = "NewUser";
@@ -102,8 +105,8 @@ namespace WindowsForms
 
         private System.Windows.Forms.Button UserChoice;
         private System.Windows.Forms.ComboBox comboBoxUsers;
-        private System.Windows.Forms.TextBox startCashText;
         private System.Windows.Forms.Label UserLabel;
         private System.Windows.Forms.Label startCash;
+        private System.Windows.Forms.MaskedTextBox startCashText;
     }
 }
